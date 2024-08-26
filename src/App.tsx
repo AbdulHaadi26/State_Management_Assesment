@@ -23,7 +23,7 @@ function App() {
   const { products, dispatch } = useProducts();
 
   const { isIntersecting, ref } = useIntersectionObserver({
-    threshold: 0.01,
+    threshold: 0.1,
   });
 
   const { isFetching, data } = useProductsHook(pageNumber);
@@ -47,7 +47,7 @@ function App() {
   }, [data, pageNumber, dispatch]);
 
   useEffect(() => {
-    if (isIntersecting && pageNumber < maxPage) {
+    if (isIntersecting && pageNumber <= maxPage) {
       setPageNumber((prev) => prev + 1);
     }
   }, [isIntersecting]);
@@ -80,11 +80,11 @@ function App() {
         />
       ))}
       {isFetching && (
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center h-1/2">
           <Loader />
         </div>
       )}
-      <div ref={ref} className="w-full h-20 bg-transparent"></div>
+      <div ref={ref} className="w-full h-20 bg-transparent mt-10"></div>
     </FluidContainer>
   );
 }

@@ -13,8 +13,10 @@ function productsReucer(
   switch (action.type) {
     case "reset":
       return action.payload;
-    case "insert":
+    case "add":
       return action.payload.concat(state);
+    case "insert":
+      return state.concat(action.payload);
     case "update":
       return state.map((item: ProductType) => {
         if (item.id === action.payload.id) {

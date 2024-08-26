@@ -21,7 +21,7 @@ const CreateProductPopup = ({ onClose }: { onClose: () => void }) => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["products"] });
       dispatch({
-        type: "insert",
+        type: "add",
         payload: [data],
       });
       onClose();
