@@ -23,7 +23,7 @@ const CartPopup = ({ onClose }: { onClose: () => void }) => {
                 onClick={() => {
                   dispatch({
                     type: "delete",
-                    payload: item.id,
+                    payload: [item],
                   });
                 }}
                 className="bg-black px-8 py-2 h-auto text-white"
